@@ -2,19 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import {AngularFireModule} from "angularfire2";
+import { LandingspageComponent } from './components/landingspage/landingspage.component';
 
-import { AppComponent } from './app.component';
-
+export const firebaseConfig = {
+  apiKey: "AIzaSyCoQYWYF3lf1ABHRE9jU-wZz7iWEC_2kr4",
+  authDomain: "angularactortemplateapp.firebaseapp.com",
+  databaseURL: "https://angularactortemplateapp.firebaseio.com",
+  storageBucket: "angularactortemplateapp.appspot.com",
+  messagingSenderId: "28825397903"
+};
 @NgModule({
   declarations: [
-    AppComponent
+    LandingspageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MaterialModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LandingspageComponent]
 })
 export class AppModule { }
