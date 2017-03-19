@@ -8,7 +8,10 @@ import { LandingspageComponent } from './components/landingspage/landingspage.co
 import { ProjectsComponent } from './components/projects/projects.component';
 import { LoginComponent } from './components/login/login.component';
 import {Router, RouterModule} from "@angular/router";
-import { LoginRoutingModule }      from './login-routing.module';
+import {
+  AuthMethods,
+  AuthProviders
+} from "angularfire2";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCoQYWYF3lf1ABHRE9jU-wZz7iWEC_2kr4",
@@ -38,8 +41,10 @@ const routes = [
     FormsModule,
     HttpModule,
     MaterialModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    LoginRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig,{
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    }),
     RouterModule.forRoot(routes)
   ],
   providers: [],

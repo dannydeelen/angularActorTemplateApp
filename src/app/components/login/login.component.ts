@@ -1,39 +1,64 @@
-import { Component }   from '@angular/core';
-import { Router }      from '@angular/router';
-import {AuthService} from "../../services/auth.service";
+import {Component} from '@angular/core';
+import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 
 @Component({
-  template: `
-    <h2>LOGIN</h2>
-    <p>{{message}}</p>
-    <p>
-      <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-      <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    </p>`
+  moduleId: module.id,
+  selector: 'login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
 })
 export class LoginComponent {
-  message: string;
-  constructor(public authService: AuthService, public router: Router) {
-    this.setMessage();
-  }
-  setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  }
-  login() {
-    this.message = 'Trying to log in ...';
-    this.authService.login().subscribe(() => {
-      this.setMessage();
-      if (this.authService.isLoggedIn) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/crisis-center/admin';
-        // Redirect the user
-        this.router.navigate([redirect]);
+ user = {};
+  private isAuth: boolean;
+
+  constructor(public af: AngularFire) {
+    this.af.auth.subscribe(user => {
+      if (user) {
+        // user logged in
+        this._changeState(user)
+        console.log(user)
+      }
+      else {
+        // user not logged in
+        this.user = {};
+        console.log(user)
       }
     });
   }
-  logout() {
-    this.authService.logout();
-    this.setMessage();
+
+  login() {
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+    });
+
   }
+
+  logout() {
+    this.af.auth.logout();
+  }
+
+  private _getUserInfo(user: any): any {
+    if (!user) {
+      return {};
+    }
+    let data = user.auth.providerData[0];
+    return {
+      name: data.displayName,
+      avatar: data.photoURL,
+      email: data.email,
+      provider: data.providerId
+    };
+  }
+
+  private _changeState(user: any = null) {
+    if (user) {
+      this.isAuth = true;
+      this.user = this._getUserInfo(user)
+    }
+    else {
+      this.isAuth = false;
+      this.user = {};
+    }
+  }
+
 }
