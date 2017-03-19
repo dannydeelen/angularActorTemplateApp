@@ -12,6 +12,7 @@ import {
   AuthMethods,
   AuthProviders
 } from "angularfire2";
+import {UserService} from "./services/user-service.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCoQYWYF3lf1ABHRE9jU-wZz7iWEC_2kr4",
@@ -22,7 +23,7 @@ export const firebaseConfig = {
 };
 const routes = [
   {path:'login', component: LoginComponent},
-  // {path:'registrations', component: RegistrationsComponent},
+  {path:'projects', component: ProjectsComponent},
   // {path:'registerworkshop', component: RegisterworkshopComponent},
   // {path:'registerworkshopformvalidation', component: RegisterworkshopformvalidationComponent},
   // {path:'registerworkshopfieldvalidation', component: RegisterworkshopfieldvalidationComponent},
@@ -47,7 +48,7 @@ const routes = [
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [LandingspageComponent]
 })
 export class AppModule {

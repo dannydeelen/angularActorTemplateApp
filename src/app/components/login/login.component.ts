@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
+import {Router} from "@angular/router";
+import {UserService} from "../../services/user-service.service";
 
 @Component({
   moduleId: module.id,
@@ -8,15 +10,15 @@ import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
   styleUrls: ['login.component.css']
 })
 export class LoginComponent {
- user = {};
-  private isAuth: boolean;
+ public user = {};
 
-  constructor(public af: AngularFire) {
+  constructor(public af: AngularFire, private router: Router, private userservice : UserService) {
     this.af.auth.subscribe(user => {
       if (user) {
         // user logged in
-        this._changeState(user)
+
         console.log(user)
+        this.router.navigate(['/projects'])
       }
       else {
         // user not logged in
@@ -30,35 +32,6 @@ export class LoginComponent {
     this.af.auth.login({
       provider: AuthProviders.Google,
     });
-
+    this.userservice.setUser(this.user)
   }
-
-  logout() {
-    this.af.auth.logout();
-  }
-
-  private _getUserInfo(user: any): any {
-    if (!user) {
-      return {};
-    }
-    let data = user.auth.providerData[0];
-    return {
-      name: data.displayName,
-      avatar: data.photoURL,
-      email: data.email,
-      provider: data.providerId
-    };
-  }
-
-  private _changeState(user: any = null) {
-    if (user) {
-      this.isAuth = true;
-      this.user = this._getUserInfo(user)
-    }
-    else {
-      this.isAuth = false;
-      this.user = {};
-    }
-  }
-
 }
