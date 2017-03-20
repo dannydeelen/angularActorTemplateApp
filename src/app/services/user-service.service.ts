@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 
 @Injectable()
 export class UserService {
 
-  constructor() { }
+  constructor() {
+  }
 
   user = {}
 
-  setUser( theUser: any){
+  setUser(theUser: any) {
     this.user = theUser;
-}
+  }
+
   getUser() {
     return this.user;
   }
