@@ -14,7 +14,6 @@ export class ProjectsComponent implements OnInit {
   user = {}
 
   constructor(public af: AngularFire, private router : Router, private userservice: UserService) {
-
   }
 
   ngOnInit() {

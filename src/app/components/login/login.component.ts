@@ -11,13 +11,16 @@ import {UserService} from "../../services/user-service.service";
 })
 export class LoginComponent {
 
-  constructor(public af: AngularFire, private router: Router, private userservice : UserService) {
+  constructor(public af: AngularFire, private router: Router, private userservice: UserService) {
     this.af.auth.subscribe(user => {
       if (user) {
         // user logged in
-        console.log(user)
         this.userservice.setUser(user)
         this.router.navigate(['/projects'])
+      }
+      else {
+        // user not logged in
+        this.router.navigate(['/login'])
       }
     });
   }

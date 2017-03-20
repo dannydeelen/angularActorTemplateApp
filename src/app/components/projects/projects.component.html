@@ -1,5 +1,4 @@
 <button md-raised-button (click)="logout()">
   Logout
 </button>
-<img md-card-avatar [src]="user.auth.providerData[0].photoURL">
-<div>{{user.email}}</div>
+<img *ngIf="[user] "md-card-avatar [src]="user.auth?.providerData[0].photoURL">
