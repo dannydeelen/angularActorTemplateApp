@@ -15,7 +15,6 @@ export class LoginComponent {
     this.af.auth.subscribe(user => {
       if (user) {
         // user logged in
-        this.userservice.setUser(user)
         this.router.navigate(['/projects'])
       }
       else {
