@@ -13,6 +13,7 @@ import {
   AuthProviders
 } from "angularfire2";
 import {UserService} from "./services/user-service.service";
+import {FirebaseIOService} from "./services/firebase-io.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCoQYWYF3lf1ABHRE9jU-wZz7iWEC_2kr4",
@@ -48,7 +49,7 @@ const routes = [
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService],
+  providers: [UserService, FirebaseIOService],
   bootstrap: [LandingspageComponent]
 })
 export class AppModule {
