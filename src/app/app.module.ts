@@ -14,17 +14,19 @@ import {
 } from "angularfire2";
 import {UserService} from "./services/user-service.service";
 import {FirebaseIOService} from "./services/firebase-io.service";
+import { ProjectComponent } from './components/project/project.component';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCoQYWYF3lf1ABHRE9jU-wZz7iWEC_2kr4",
-  authDomain: "angularactortemplateapp.firebaseapp.com",
-  databaseURL: "https://angularactortemplateapp.firebaseio.com",
-  storageBucket: "angularactortemplateapp.appspot.com",
-  messagingSenderId: "28825397903"
+  apiKey: "AIzaSyB3HBTlvQog9e_RLvwo9JHKW_2cVpJuSp0",
+  authDomain: "actortemplateapp-ec651.firebaseapp.com",
+  databaseURL: "https://actortemplateapp-ec651.firebaseio.com",
+  storageBucket: "actortemplateapp-ec651.appspot.com",
+  messagingSenderId: "982486536780"
 };
 const routes = [
   {path:'login', component: LoginComponent},
   {path:'projects', component: ProjectsComponent},
+  {path:'project', component: ProjectComponent}
   // {path:'registerworkshop', component: RegisterworkshopComponent},
   // {path:'registerworkshopformvalidation', component: RegisterworkshopformvalidationComponent},
   // {path:'registerworkshopfieldvalidation', component: RegisterworkshopfieldvalidationComponent},
@@ -37,6 +39,7 @@ const routes = [
     LandingspageComponent,
     ProjectsComponent,
     LoginComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

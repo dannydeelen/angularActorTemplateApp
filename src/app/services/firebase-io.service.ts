@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFire} from "angularfire2";
 import {Observable} from "rxjs";
 import {Project} from "../models/project";
+import {Actor} from "../models/actor";
 
 @Injectable()
 export class FirebaseIOService {
@@ -13,6 +14,9 @@ export class FirebaseIOService {
 
   getProjects() : Observable<Project []>{
     return this.af.database.list(this.PATH)
+  }
+  getActors(key: string) : Observable<Actor []>{
+    return this.af.database.list(this.PATH + "/" + key)
   }
 
   getRegistration(key : string) : Observable<Project>{

@@ -3,6 +3,8 @@ import {AngularFire} from 'angularfire2';
 import {Router} from "@angular/router";
 import {LoginComponent} from "../login/login.component";
 import {UserService} from "../../services/user-service.service";
+import {FirebaseIOService} from "../../services/firebase-io.service";
+import {Project} from "../../models/project";
 
 @Component({
   selector: 'app-projects',
@@ -12,8 +14,9 @@ import {UserService} from "../../services/user-service.service";
 export class ProjectsComponent implements OnInit {
 
   user = {}
+  projects : Array<Project> = []
 
-  constructor(public af: AngularFire, private router: Router, private userservice: UserService) {
+  constructor(public af: AngularFire, private router: Router, private userservice: UserService, private firebaseservice : FirebaseIOService) {
     this.af.auth.subscribe(user => {
       if (user) {
         // user logged in
@@ -28,6 +31,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firebaseservice.getProjects().subscribe(proj => this.projects = proj)
   }
 
   logout() {
