@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FirebaseIOService} from "../../services/firebase-io.service";
 import {Actor} from "../../models/actor";
+import {Router} from "@angular/router";
+import {ProjectService} from "../../services/project.service";
+import {ActorService} from "../../services/actor.service";
 
 @Component({
   selector: 'app-project',
@@ -8,12 +11,19 @@ import {Actor} from "../../models/actor";
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
-  actors : Array<Actor> = []
+  actors : any;
+  project: any;
 
-  constructor(private firebaseservice : FirebaseIOService) { }
+  constructor(private firebaseservice : FirebaseIOService,  private router: Router,
+              private actorService : ActorService , private projectService: ProjectService) { }
 
   ngOnInit() {
-    this.firebaseservice.getActors("key").subscribe(actor => this.actors = actor)
+    this.project = this.projectService.getProject();
+    this.firebaseservice.getActors(this.project.$key).subscribe(actor => this.actors = actor);
+   // this.actors = this.project.Actors
   }
-
+  openActor(currentActor){
+    this.actorService.setActor(currentActor);
+    this.router.navigate(['/projects/'+ this.project.$key+ "/" + currentActor.actor]);
+  }
 }

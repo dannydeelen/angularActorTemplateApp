@@ -2,7 +2,7 @@
   Logout
 </button>
 <img *ngIf="[user] "md-card-avatar [src]="user.auth?.providerData[0].photoURL">
-<md-card *ngFor="let project of projects" *[ngClass]="{ : (project.index % 2 === 0)}">
+<md-card *ngFor="let project of projects" (click)="openProject(project)">
   <md-card-title>
     <span class="md-headline">{{project.title}}</span>
     <span class="subhead">{{project.content}}</span>

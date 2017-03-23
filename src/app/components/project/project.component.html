@@ -1,3 +1,7 @@
-<p>
-  project works!
-</p>
+<md-card *ngFor="let actor of actors" (click)="openActor(actor)">
+  <md-card-title>
+    <span class="md-headline">Actor: {{actor.actor}}</span>
+    <br/>
+    <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
+  </md-card-title>
+</md-card>

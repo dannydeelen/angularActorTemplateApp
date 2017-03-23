@@ -15,8 +15,11 @@ export class FirebaseIOService {
   getProjects() : Observable<Project []>{
     return this.af.database.list(this.PATH)
   }
-  getActors(key: string) : Observable<Actor []>{
-    return this.af.database.list(this.PATH + "/" + key)
+  getActors(projectKey: string) : Observable<Actor []>{
+    return this.af.database.list(this.PATH + "/" + projectKey + "/Actors");
+  }
+  getPersons(projectKey: string, actorKey) : Observable<Actor []>{
+    return this.af.database.list(this.PATH + "/" + projectKey + "/Actors/" + actorKey);
   }
 
   getRegistration(key : string) : Observable<Project>{

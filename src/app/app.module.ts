@@ -15,6 +15,9 @@ import {
 import {UserService} from "./services/user-service.service";
 import {FirebaseIOService} from "./services/firebase-io.service";
 import { ProjectComponent } from './components/project/project.component';
+import {ProjectService} from "./services/project.service";
+import { ActorComponent } from './components/actor/actor.component';
+import {ActorService} from "./services/actor.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB3HBTlvQog9e_RLvwo9JHKW_2cVpJuSp0",
@@ -26,7 +29,8 @@ export const firebaseConfig = {
 const routes = [
   {path:'login', component: LoginComponent},
   {path:'projects', component: ProjectsComponent},
-  {path:'project', component: ProjectComponent}
+  {path:'projects/:title', component: ProjectComponent},
+  {path:'projects/:title/:actorTitle', component: ActorComponent}
   // {path:'registerworkshop', component: RegisterworkshopComponent},
   // {path:'registerworkshopformvalidation', component: RegisterworkshopformvalidationComponent},
   // {path:'registerworkshopfieldvalidation', component: RegisterworkshopfieldvalidationComponent},
@@ -40,6 +44,7 @@ const routes = [
     ProjectsComponent,
     LoginComponent,
     ProjectComponent,
+    ActorComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,7 @@ const routes = [
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService, FirebaseIOService],
+  providers: [UserService, FirebaseIOService, ProjectService, ActorService],
   bootstrap: [LandingspageComponent]
 })
 export class AppModule {
