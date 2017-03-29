@@ -18,6 +18,7 @@ import { ProjectComponent } from './components/project/project.component';
 import {ProjectService} from "./services/project.service";
 import { ActorComponent } from './components/actor/actor.component';
 import {ActorService} from "./services/actor.service";
+import { AddpersonComponent } from './components/addperson/addperson.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB3HBTlvQog9e_RLvwo9JHKW_2cVpJuSp0",
@@ -44,7 +45,8 @@ const routes = [
     ProjectsComponent,
     LoginComponent,
     ProjectComponent,
-    ActorComponent
+    ActorComponent,
+    AddpersonComponent
   ],
   imports: [
     BrowserModule,
