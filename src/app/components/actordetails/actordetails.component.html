@@ -1,0 +1,30 @@
+
+<md-card >
+  <md-card-title>
+    <span class="md-headline">Actor: {{actor.actor}}</span>
+    <br/>
+    <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
+    <button md-raised-button (click)="editActor(actor)">Edit</button>
+  </md-card-title>
+</md-card>
+<md-card *ngFor="let person of persons" (click)="openPerson(person)" >
+  <md-card-title>
+    <span class="subhead">Naam: {{person.naam}}</span>
+    <br/>
+    <span class="subhead">Functie: {{person.functie}}</span>
+    <br/>
+    <span class="subhead">Email: {{person.email}}</span>
+    <br/>
+    <span class="subhead">Telefoon: {{person.telefoon}}</span>
+    <br/>
+    <span class="subhead">Opmerkingen: {{person.opmkeringen}}</span>
+    <br/>
+    <button md-raised-button (click)="openPerson(person)">Edit</button>
+  </md-card-title>
+</md-card>
+<md-card-actions align="end">
+  <button md-raised-button (click)="newPerson()">
+    New
+  </button>
+</md-card-actions>
+{{persons | json}}

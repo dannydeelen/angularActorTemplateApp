@@ -4,6 +4,7 @@ import {Actor} from "../../models/actor";
 import {Router} from "@angular/router";
 import {ProjectService} from "../../services/project.service";
 import {ActorService} from "../../services/actor.service";
+import {PersonService} from "../../services/person.service";
 
 @Component({
   selector: 'app-project',
@@ -15,7 +16,8 @@ export class ProjectComponent implements OnInit {
   project: any;
 
   constructor(private firebaseservice : FirebaseIOService,  private router: Router,
-              private actorService : ActorService , private projectService: ProjectService) { }
+              private actorService : ActorService , private projectService: ProjectService,
+              private personService : PersonService) { }
 
   ngOnInit() {
     this.project = this.projectService.getProject();
@@ -24,6 +26,10 @@ export class ProjectComponent implements OnInit {
   }
   openActor(currentActor){
     this.actorService.setActor(currentActor);
-    this.router.navigate(['/projects/'+ this.project.$key+ "/" + currentActor.actor]);
+    this.router.navigate(['/projects/'+ this.project.$key+ "/" + currentActor.actor + "/details"]);
   }
+  newActor(){
+    this.router.navigate(['/projects/'+ this.project.$key+ "/newActor" ]);
+  }
+
 }

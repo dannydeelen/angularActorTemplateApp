@@ -18,7 +18,9 @@ import { ProjectComponent } from './components/project/project.component';
 import {ProjectService} from "./services/project.service";
 import { ActorComponent } from './components/actor/actor.component';
 import {ActorService} from "./services/actor.service";
-import { AddpersonComponent } from './components/addperson/addperson.component';
+import { AddpersonComponent } from './components/person/person.component';
+import { ActordetailsComponent } from './components/actordetails/actordetails.component';
+import {PersonService} from "./services/person.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB3HBTlvQog9e_RLvwo9JHKW_2cVpJuSp0",
@@ -31,7 +33,11 @@ const routes = [
   {path:'login', component: LoginComponent},
   {path:'projects', component: ProjectsComponent},
   {path:'projects/:title', component: ProjectComponent},
-  {path:'projects/:title/:actorTitle', component: ActorComponent}
+  {path:'projects/:title/:actorTitle', component: ActorComponent},
+  {path:'projects/:title/:actorTitle/details', component: ActordetailsComponent},
+  {path:'projects/:title/newActor', component: ActorComponent},
+  {path:'projects/:title/:actorTitle/:personName', component: AddpersonComponent},
+  {path:'projects/:title/:actorTitle/newPerson', component: AddpersonComponent},
   // {path:'registerworkshop', component: RegisterworkshopComponent},
   // {path:'registerworkshopformvalidation', component: RegisterworkshopformvalidationComponent},
   // {path:'registerworkshopfieldvalidation', component: RegisterworkshopfieldvalidationComponent},
@@ -46,7 +52,8 @@ const routes = [
     LoginComponent,
     ProjectComponent,
     ActorComponent,
-    AddpersonComponent
+    AddpersonComponent,
+    ActordetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +66,7 @@ const routes = [
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService, FirebaseIOService, ProjectService, ActorService],
+  providers: [UserService, FirebaseIOService, ProjectService, ActorService, PersonService],
   bootstrap: [LandingspageComponent]
 })
 export class AppModule {

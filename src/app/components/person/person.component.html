@@ -1,0 +1,65 @@
+<form #f="ngForm" (ngSubmit)="savePerson(f)">
+<md-input-container>
+  <input mdInput
+         required
+         [(ngModel)]="person.naam"
+         type="text"
+         placeholder="Naam"
+         name="naam"
+         required/>
+</md-input-container>
+<br>
+<md-input-container>
+  <input mdInput
+         type="text"
+         required
+         [(ngModel)]="person.functie"
+         placeholder="Functie"
+         name="functie"
+         required/>
+</md-input-container>
+<br>
+<md-input-container>
+  <input mdInput
+         type="text"
+         required
+         [(ngModel)]="person.email"
+         name="email"
+         placeholder="Email"
+         required/>
+</md-input-container>
+<br>
+<md-input-container>
+  <input mdInput
+         type="text"
+         required
+         [(ngModel)]="person.telefoon"
+         placeholder="Telefoonnummer"
+         name="telefoon"
+         required/>
+</md-input-container>
+  <md-select placeholder="Telefoon Type" [(ngModel)]="person.telefoontype"name="telefoontype">
+    <md-option value="Mobile">
+      Mobile
+    </md-option>
+    <md-option value="Home">
+      Home
+    </md-option>
+  </md-select>
+<br>
+<md-input-container>
+  <input mdInput
+         type="text"
+         required
+         [(ngModel)]="person.opmkeringen"
+         placeholder="Opmerkingen"
+         name="opmkeringen"
+         required/>
+</md-input-container>
+  <md-card-actions>
+    <button md-raised-button type="submit">
+      Save
+    </button>
+  </md-card-actions>
+
+</form>

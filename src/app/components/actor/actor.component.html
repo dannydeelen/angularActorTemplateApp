@@ -1,6 +1,8 @@
+<form #f="ngForm" (ngSubmit)="saveActor(f)">
 <md-input-container>
   <input  mdInput
           [(ngModel)]="actor.actor"
+          name="actor"
           type="text"
           placeholder="Actor"
           required/>
@@ -9,7 +11,14 @@
 <md-input-container>
   <input  mdInput
           [(ngModel)]="actor.beschrijving"
+          name="beschrijving"
           type="text"
           placeholder="Beschrijving"
           required/>
 </md-input-container>
+<md-card-actions>
+  <button md-raised-button type="submit">
+    Save
+  </button>
+</md-card-actions>
+</form>
