@@ -24,6 +24,7 @@ export class ProjectsComponent implements OnInit {
       if (user) {
         // user logged in
         this.user = user
+        this.userservice.setUser(user);
         this.router.navigate(['/projects'])
       }
       else {

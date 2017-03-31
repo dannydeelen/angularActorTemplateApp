@@ -3,6 +3,7 @@
   <input mdInput
          required
          [(ngModel)]="person.naam"
+         [readonly]="user.auth.email != project.analistID"
          type="text"
          placeholder="Naam"
          name="naam"
@@ -13,6 +14,7 @@
   <input mdInput
          type="text"
          required
+         [readonly]="user.auth.email != project.analistID"
          [(ngModel)]="person.functie"
          placeholder="Functie"
          name="functie"
@@ -22,6 +24,7 @@
 <md-input-container>
   <input mdInput
          type="text"
+         [readonly]="user.auth.email != project.analistID"
          required
          [(ngModel)]="person.email"
          name="email"
@@ -33,13 +36,14 @@
   <input mdInput
          type="text"
          required
+         [readonly]="user.auth.email != project.analistID"
          [(ngModel)]="person.telefoon"
          placeholder="Telefoonnummer"
          name="telefoon"
          required/>
 </md-input-container>
-  <md-select placeholder="Telefoon Type" [(ngModel)]="person.telefoontype"name="telefoontype">
-    <md-option value="Mobile">
+  <md-select placeholder="Telefoon Type" [(ngModel)]="person.telefoontype"name="telefoontype" >
+    <md-option value="Mobile" >
       Mobile
     </md-option>
     <md-option value="Home">
@@ -51,6 +55,7 @@
   <input mdInput
          type="text"
          required
+         [readonly]="user.auth.email != project.analistID"
          [(ngModel)]="person.opmkeringen"
          placeholder="Opmerkingen"
          name="opmkeringen"

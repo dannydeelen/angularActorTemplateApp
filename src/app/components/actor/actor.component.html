@@ -1,6 +1,7 @@
 <form #f="ngForm" (ngSubmit)="saveActor(f)">
 <md-input-container>
   <input  mdInput
+          [readonly]="user.auth.email != project.analistID"
           [(ngModel)]="actor.actor"
           name="actor"
           type="text"
@@ -11,6 +12,7 @@
 <md-input-container>
   <input  mdInput
           [(ngModel)]="actor.beschrijving"
+          [readonly]="user.auth.email != project.analistID"
           name="beschrijving"
           type="text"
           placeholder="Beschrijving"

@@ -3,6 +3,7 @@ import {PersonService} from "../../services/person.service";
 import {ProjectService} from "../../services/project.service";
 import {ActorService} from "../../services/actor.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../services/user-service.service";
 
 @Component({
   selector: 'app-addperson',
@@ -14,13 +15,15 @@ export class AddpersonComponent implements OnInit {
   person: any;
   project: any;
   actor: any;
+  user: any;
   constructor(private personService : PersonService, private projectService : ProjectService
-  , private actorService : ActorService, private router : Router) {
+  , private actorService : ActorService, private router : Router, private userService: UserService) {
     this.initPersonRegistration();
   }
 
   ngOnInit() {
     this.person = {};
+    this.user = this.userService.getUser();
     this.person = this.personService.getPerson();
     this.project = this.projectService.getProject();
     this.actor = this.actorService.getActor();

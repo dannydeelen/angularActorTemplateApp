@@ -1,10 +1,10 @@
 
 <md-card >
-  <md-card-title>
+  <md-card-title (click)="editActor(actor)">
     <span class="md-headline">Actor: {{actor.actor}}</span>
     <br/>
     <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
-    <button md-raised-button (click)="editActor(actor)">Edit</button>
+    <button md-raised-button *ngIf="user.auth.email == project.analistID" (click)="editActor(actor)">Edit</button>
   </md-card-title>
 </md-card>
 <md-card *ngFor="let person of persons" (click)="openPerson(person)" >
@@ -19,7 +19,7 @@
     <br/>
     <span class="subhead">Opmerkingen: {{person.opmkeringen}}</span>
     <br/>
-    <button md-raised-button (click)="openPerson(person)">Edit</button>
+    <button md-raised-button *ngIf="user.auth.email == project.analistID" (click)="editPerson(person)">Edit</button>
   </md-card-title>
 </md-card>
 <md-card-actions align="end">

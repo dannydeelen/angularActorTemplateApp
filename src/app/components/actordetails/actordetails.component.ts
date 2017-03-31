@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {ActorService} from "../../services/actor.service";
 import {FirebaseIOService} from "../../services/firebase-io.service";
 import {PersonService} from "../../services/person.service";
+import {UserService} from "../../services/user-service.service";
 
 @Component({
   selector: 'app-actordetails',
@@ -14,12 +15,14 @@ export class ActordetailsComponent implements OnInit {
   actor: any;
   project : any;
   persons: any;
+  user: any;
 
   constructor(private actorService : ActorService, private projectService : ProjectService,
               private firebaseservice : FirebaseIOService, private router : Router,
-              private personService : PersonService,) { }
+              private personService : PersonService, private userService : UserService) { }
 
   ngOnInit() {
+    this.user = this.userService.getUser();
     this.project = this.projectService.getProject();
     this.actor = this.actorService.getActor();
     this.firebaseservice.getPersons(this.project.$key, this.actor.$key).subscribe(person => this.persons = person);
