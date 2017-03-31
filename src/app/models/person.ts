@@ -8,5 +8,6 @@ export interface Person{
   opmkeringen: string,
   telefoon: string,
   telefoontype: string,
+  imageString?: String,
   functie: string
 }

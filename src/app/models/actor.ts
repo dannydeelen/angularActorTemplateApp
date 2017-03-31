@@ -8,5 +8,5 @@ export interface Actor{
   content: string,
   beschrijving: string,
   archived: boolean,
-  persons : Array<Person>
+  persons? : Array<Person>
 }

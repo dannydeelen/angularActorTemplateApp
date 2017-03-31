@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {FirebaseIOService} from "../../services/firebase-io.service";
 import {Actor} from "../../models/actor";
 import {Router} from "@angular/router";
@@ -11,6 +11,7 @@ import {PersonService} from "../../services/person.service";
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
+
 export class ProjectComponent implements OnInit {
   actors : any;
   project: any;
@@ -22,7 +23,6 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.project = this.projectService.getProject();
     this.firebaseservice.getActors(this.project.$key).subscribe(actor => this.actors = actor);
-   // this.actors = this.project.Actors
   }
   openActor(currentActor){
     this.actorService.setActor(currentActor);

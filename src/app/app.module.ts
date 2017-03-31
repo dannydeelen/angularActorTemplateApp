@@ -21,6 +21,8 @@ import {ActorService} from "./services/actor.service";
 import { AddpersonComponent } from './components/person/person.component';
 import { ActordetailsComponent } from './components/actordetails/actordetails.component';
 import {PersonService} from "./services/person.service";
+import { PersoonpipePipe } from './pipes/persoonpipe.pipe';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB3HBTlvQog9e_RLvwo9JHKW_2cVpJuSp0",
@@ -54,6 +56,8 @@ const routes = [
     ActorComponent,
     AddpersonComponent,
     ActordetailsComponent,
+    PersoonpipePipe,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,

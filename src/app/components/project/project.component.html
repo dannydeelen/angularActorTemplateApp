@@ -4,7 +4,14 @@
     <br/>
     <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
   </md-card-title>
+  <md-card
+    *ngFor= "let persoon of actor?.persons | persoonpipe">
+  <img
+    [src]="'data:image/png;base64,' + persoon?.imageString | safeUrl"
+    width="200px"/>
+  </md-card>
 </md-card>
+
 <md-card-actions align="end">
   <button md-raised-button (click)="newActor()">
     New
