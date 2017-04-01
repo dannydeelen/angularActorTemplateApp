@@ -23,6 +23,7 @@ import { ActordetailsComponent } from './components/actordetails/actordetails.co
 import {PersonService} from "./services/person.service";
 import { PersoonpipePipe } from './pipes/persoonpipe.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import {ImageUploadModule} from "angular2-image-upload";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB3HBTlvQog9e_RLvwo9JHKW_2cVpJuSp0",
@@ -62,6 +63,7 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ImageUploadModule.forRoot(),
     HttpModule,
     MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig,{
