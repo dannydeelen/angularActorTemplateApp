@@ -61,6 +61,18 @@
          name="opmkeringen"
          required/>
 </md-input-container>
+  <img
+    [src]="'data:image/png;base64,' + person.imageString | safeUrl"
+    width="50px"
+    height="50px"/>
+  <image-upload
+    width="100px"
+    [preview] ="false"
+  [max]="1"
+  [dropBoxMessage]="'Drop your images here!'"
+  (onFileUploadFinish)="setImage($event)"
+  (onRemove)="imageRemoved()">
+  </image-upload>
   <md-card-actions>
     <button md-raised-button type="submit">
       Save
