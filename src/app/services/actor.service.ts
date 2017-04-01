@@ -22,4 +22,7 @@ export class ActorService {
   saveNewActor(projectKey : String, actor : Actor){
     this.af.database.list(this.PATH + "/" + projectKey + "/Actors/").push(actor);
   }
+  archiveActor(projectKey : String, actor : Actor){
+    this.af.database.object(this.PATH + "/" + projectKey + "/Actors/" + actor.$key).update(actor);
+  }
 }

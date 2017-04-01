@@ -42,5 +42,9 @@ export class ActordetailsComponent implements OnInit {
   newPerson(){
     this.router.navigate(['/projects/'+ this.project.$key+ "/" + this.actor.actor + "/newPerson" ]);
   }
-
+  archiveActor(actor){
+    actor.archived = true;
+    this.actorService.archiveActor(this.project.$key, actor);
+    this.router.navigate(['/projects/'+ this.project.$key+ "/"]);
+  }
 }
