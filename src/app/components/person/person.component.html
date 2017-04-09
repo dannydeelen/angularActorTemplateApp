@@ -1,4 +1,11 @@
+<md-card class="main-card">
+  <md-card-title>
+    <span class="md-headline">{{project.$key}}</span>
+    <br/>
+    <span class="subhead">{{project.content}}</span>
+  </md-card-title>
 <form #f="ngForm" (ngSubmit)="savePerson(f)">
+  <md-card>
 <md-input-container>
   <input mdInput
          required
@@ -73,10 +80,9 @@
   (onFileUploadFinish)="setImage($event)"
   (onRemove)="imageRemoved()">
   </image-upload>
-  <md-card-actions>
-    <button md-raised-button type="submit">
-      Save
+    <button type="submit" class="save-button">
+      <i class="material-icons icon-flipped">reply</i>
     </button>
-  </md-card-actions>
-
+  </md-card>
 </form>
+</md-card>

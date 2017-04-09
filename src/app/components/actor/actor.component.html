@@ -1,4 +1,13 @@
+<md-card class="main-card">
+  <md-card-title>
+    <span class="md-headline">{{project.$key}}</span>
+    <br/>
+    <span class="subhead">{{project.content}}</span>
+  </md-card-title>
 <form #f="ngForm" (ngSubmit)="saveActor(f)">
+<md-card>
+  <i class="material-icons">supervisor_account</i>
+  <br>
 <md-input-container>
   <input  mdInput
           [readonly]="user.auth.email != project.analistID"
@@ -18,9 +27,9 @@
           placeholder="Beschrijving"
           required/>
 </md-input-container>
-<md-card-actions>
-  <button md-raised-button type="submit">
-    Save
+  <button type="submit" class="save-button">
+    <i class="material-icons icon-flipped">reply</i>
   </button>
-</md-card-actions>
+</md-card>
 </form>
+</md-card>

@@ -38,10 +38,7 @@ export class ProjectsComponent implements OnInit {
     this.firebaseservice.getProjects().subscribe(proj => this.projects = proj)
   }
 
-  logout() {
-    this.af.auth.logout();
-    this.router.navigate(['/login'])
-  }
+
   openProject(currentProject){
     this.projectSerivce.setProject(currentProject);
     this.router.navigate(['/projects/'+ currentProject.$key]);

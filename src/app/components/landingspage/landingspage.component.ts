@@ -8,7 +8,7 @@ import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
   styleUrls: ['./landingspage.component.css']
 })
 export class LandingspageComponent implements OnInit {
-
+  user = {}
   constructor(public af : AngularFire, public router :Router) {
     this.af.auth.subscribe(user => {
       if (user) {
@@ -23,6 +23,10 @@ export class LandingspageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  logout() {
+    this.af.auth.logout();
+    this.router.navigate(['/login'])
   }
 
 }

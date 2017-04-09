@@ -1,14 +1,21 @@
 
-<md-card >
+<md-card class="main-card">
+  <md-card-title>
+    <span class="md-headline">{{project.$key}}</span>
+    <br/>
+    <span class="subhead">{{project.content}}</span>
+  </md-card-title>
+  <i class="material-icons archive-button" *ngIf="user.auth.email == project.analistID" (click)="archiveActor(actor)">backup</i>
+  <md-card class="actor-card">
   <md-card-title (click)="editActor(actor)">
     <span class="md-headline">Actor: {{actor.actor}}</span>
     <br/>
     <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
-    <button md-raised-button *ngIf="user.auth.email == project.analistID" (click)="editActor(actor)">Edit</button>
+    <i class="material-icons edit-button" *ngIf="user.auth.email == project.analistID" (click)="editActor(actor)">create</i>
   </md-card-title>
 </md-card>
-<md-card *ngFor="let person of persons" (click)="openPerson(person)" >
-  <md-card-title>
+<md-card  *ngFor="let person of persons" (click)="openPerson(person)" class="actor-person-card"  >
+  <md-card-title *ngIf="persons.length > 0">
     <span class="subhead">Naam: {{person.naam}}</span>
     <br/>
     <span class="subhead">Functie: {{person.functie}}</span>
@@ -19,12 +26,8 @@
     <br/>
     <span class="subhead">Opmerkingen: {{person.opmkeringen}}</span>
     <br/>
-    <button md-raised-button *ngIf="user.auth.email == project.analistID" (click)="editPerson(person)">Edit</button>
+    <i class="material-icons edit-button" *ngIf="user.auth.email == project.analistID" (click)="editPerson(person)">create</i>
   </md-card-title>
 </md-card>
-<md-card-actions align="end">
-  <button md-raised-button (click)="newPerson()">
-    New
-  </button>
-</md-card-actions>
-<button md-raised-button *ngIf="user.auth.email == project.analistID" (click)="archiveActor(actor)">Archiveren</button>
+  <i class="material-icons add-button" *ngIf="user.auth.email == project.analistID" (click)="newPerson()">add_circle</i>
+</md-card>

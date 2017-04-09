@@ -1,8 +1,11 @@
 <div>
   <button md-button [mdMenuTriggerFor]="appMenu">Menu</button>
+  <button md-button (click)="logout()">Logout</button>
+  <img *ngIf="[user] "md-card-avatar [src]="user.auth?.photoURL">
   <md-menu #appMenu="mdMenu">
 
     <button routerLink="/login" md-menu-item> Login</button>
+    <button routerLink="/projects" md-menu-item> Projects</button>
     <!--<button routerLink="/registerworkshopformvalidation" md-menu-item> Registration workshop form validation</button>-->
     <!--<button routerLink="/registerworkshopfieldvalidation" md-menu-item> Registration workshop field validation</button>-->
     <!--<button routerLink="/registeronworkshopfieldvalidationplus" md-menu-item> Registration workshop field validation plus</button>-->
@@ -11,4 +14,5 @@
   </md-menu>
 <br>
   <router-outlet></router-outlet>
+
 </div>

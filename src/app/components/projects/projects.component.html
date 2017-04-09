@@ -1,10 +1,9 @@
-<button md-raised-button (click)="logout()">
-  Logout
-</button>
-<img *ngIf="[user] "md-card-avatar [src]="user.auth?.providerData[0].photoURL">
-<md-card *ngFor="let project of projects" (click)="openProject(project)">
+<md-card *ngFor="let project of projects" (click)="openProject(project)" class="project-card">
   <md-card-title>
     <span class="md-headline">{{project.title}}</span>
+    <br>
     <span class="subhead">{{project.content}}</span>
+    <br>
+  <i class="material-icons edit-button" *ngIf="user.auth.email == project.analistID" (click)="openProject(project)" >create</i>
   </md-card-title>
 </md-card>

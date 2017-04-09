@@ -1,23 +1,33 @@
-<div *ngFor="let actor of actors" (click)="openActor(actor)" >
-<md-card *ngIf="actor.archived == false" >
+<md-card class="main-card">
   <md-card-title>
-    <span class="md-headline">Actor: {{actor.actor}}</span>
+    <span class="md-headline">{{project.$key}}</span>
     <br/>
-    <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
+    <span class="subhead">{{project.content}}</span>
   </md-card-title>
-  <div>
-  <img
-    *ngFor= "let persoon of actor?.persons | persoonpipe"
-    [src]="'data:image/png;base64,' + persoon?.imageString | safeUrl"
-    width="50px"
-    hspace="10px"
-    height="50px"/>
-</div>
+  <div *ngFor="let actor of actors" (click)="openActor(actor)" class="project-actor-card">
+    <md-card *ngIf="actor.archived == false" >
+      <table>
+        <tr>
+          <td>
+            <i class="material-icons">supervisor_account</i>
+          </td>
+          <td>
+            <md-card-title>
+              <span class="md-headline">Actor: {{actor.actor}}</span>
+              <br/>
+              <span class="subhead">Beschrijving: {{actor.beschrijving}}</span>
+            </md-card-title>
+          </td>
+        </tr>
+      </table>
+           <div *ngFor="let persoon of actor?.persons | persoonpipe" class="person-image"> <img
+              [src]="'data:image/png;base64,' + persoon?.imageString | safeUrl"
+              width="50px"
+              hspace="10px"
+              height="50px"/><br>
+            <p>{{persoon.value.naam}}</p>
+           </div>
+    </md-card>
+  </div>
+  <i class="material-icons add-button" (click)="newActor()">add_circle</i>
 </md-card>
-</div>
-
-<md-card-actions align="end">
-  <button md-raised-button (click)="newActor()">
-    New
-  </button>
-</md-card-actions>
