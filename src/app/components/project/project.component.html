@@ -20,14 +20,17 @@
           </td>
         </tr>
       </table>
-           <div *ngFor="let persoon of actor?.persons | persoonpipe" class="person-image"> <img
+           <div *ngFor="let persoon of actor?.persons | persoonpipe" class="person-image">
+             <div *ngIf="(persoon?.imageString != undefined)">
+             <img
               [src]="'data:image/png;base64,' + persoon?.imageString | safeUrl"
               width="50px"
               hspace="10px"
-              height="50px"/><br>
+              height="50px"/>
+             </div><br>
             <p>{{persoon.value.naam}}</p>
            </div>
     </md-card>
   </div>
-  <i class="material-icons add-button" (click)="newActor()">add_circle</i>
+  <i class="material-icons add-button" (click)="newActor()" *ngIf="user.auth.email == project.analistID">add_circle</i>
 </md-card>

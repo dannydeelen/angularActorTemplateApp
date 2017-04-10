@@ -12,6 +12,7 @@ export class LandingspageComponent implements OnInit {
   constructor(public af : AngularFire, public router :Router) {
     this.af.auth.subscribe(user => {
       if (user) {
+        this.user = user;
         // user logged in
         this.router.navigate(['/projects'])
       }

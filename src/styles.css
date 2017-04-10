@@ -65,4 +65,9 @@ background-color:cadetblue
   position: absolute;
   right:10px !important;
   bottom:10px !important;
+
+}
+.foto{
+  width:20px;
+  height:20px;
 }

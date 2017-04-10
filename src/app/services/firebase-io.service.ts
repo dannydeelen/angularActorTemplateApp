@@ -17,7 +17,7 @@ export class FirebaseIOService {
     return this.af.database.list(this.PATH)
   }
   getActors(projectKey: string) : Observable<Actor []>{
-    return this.af.database.list(this.PATH + "/" + projectKey + "/Actors");
+    return this.af.database.list(this.PATH + "/" + projectKey + "/Actors/");
   }
   getPersons(projectKey: string, actorKey) : Observable<Person []>{
     return this.af.database.list(this.PATH + "/" + projectKey + "/Actors/" + actorKey + "/persons/");

@@ -5,6 +5,7 @@ import {ActorService} from "../../services/actor.service";
 import {FirebaseIOService} from "../../services/firebase-io.service";
 import {PersonService} from "../../services/person.service";
 import {UserService} from "../../services/user-service.service";
+import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 
 @Component({
   selector: 'app-actordetails',
@@ -19,7 +20,9 @@ export class ActordetailsComponent implements OnInit {
 
   constructor(private actorService : ActorService, private projectService : ProjectService,
               private firebaseservice : FirebaseIOService, private router : Router,
-              private personService : PersonService, private userService : UserService) { }
+              private personService : PersonService, private userService : UserService,
+              public af : AngularFire,) {
+  }
 
   ngOnInit() {
     this.user = this.userService.getUser();

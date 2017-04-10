@@ -1,7 +1,7 @@
 <div>
   <button md-button [mdMenuTriggerFor]="appMenu">Menu</button>
   <button md-button (click)="logout()">Logout</button>
-  <img *ngIf="[user] "md-card-avatar [src]="user.auth?.photoURL">
+  <img *ngIf="[user] "md-card-avatar [src]="user?.auth?.providerData[0].photoURL" class="foto">
   <md-menu #appMenu="mdMenu">
 
     <button routerLink="/login" md-menu-item> Login</button>
