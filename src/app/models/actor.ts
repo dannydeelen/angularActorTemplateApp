@@ -7,6 +7,6 @@ export interface Actor{
   actor: string,
   content: string,
   beschrijving: string,
-  archived: boolean,
+  archived?: boolean,
   persons? : Array<Person>
 }

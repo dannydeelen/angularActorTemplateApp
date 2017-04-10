@@ -3,8 +3,6 @@
   <button md-button (click)="logout()">Logout</button>
   <img *ngIf="[user] "md-card-avatar [src]="user?.auth?.providerData[0].photoURL" class="foto">
   <md-menu #appMenu="mdMenu">
-
-    <button routerLink="/login" md-menu-item> Login</button>
     <button routerLink="/projects" md-menu-item> Projects</button>
     <!--<button routerLink="/registerworkshopformvalidation" md-menu-item> Registration workshop form validation</button>-->
     <!--<button routerLink="/registerworkshopfieldvalidation" md-menu-item> Registration workshop field validation</button>-->

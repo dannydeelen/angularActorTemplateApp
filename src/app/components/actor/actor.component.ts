@@ -37,8 +37,10 @@ export class ActorComponent implements OnInit {
       this.actorService.saveNewActor(this.project.$key, this.actor);
     }
     form.reset();
-    this.router.navigate(['/projects/' + this.project.$key]);
     this.actorService.actor = {};
+    this.actor = {};
+    this.router.navigate(['/projects/' + this.project.$key]);
+
   }
 
   initActorRegistration() {

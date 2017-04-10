@@ -39,8 +39,8 @@ export class AddpersonComponent implements OnInit {
       this.personService.saveNewPerson(this.project.$key, this.actor.$key, this.person);
     }
     form.reset();
-    this.router.navigate(['/projects/' + this.project.$key + "/" + this.actor.actor + "/details"]);
     this.personService.person = {};
+    this.router.navigate(['/projects/' + this.project.$key + "/" + this.actor.actor + "/details"]);
   }
 
   initPersonRegistration() {

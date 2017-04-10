@@ -5,7 +5,7 @@
     <span class="subhead">{{project.content}}</span>
   </md-card-title>
   <div *ngFor="let actor of actors" (click)="openActor(actor)" class="project-actor-card">
-    <md-card *ngIf="actor.archived == false" >
+    <md-card *ngIf="actor.archived == false || actor.archived == undefined" >
       <table>
         <tr>
           <td>
